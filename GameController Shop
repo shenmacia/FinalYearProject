@@ -1,0 +1,66 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class GameController : MonoBehaviour
+{
+
+    public ScoreSystem coins;
+    public Button archerButton, knightButton, turret3Button;
+    public GameObject archerUnbuyable, knightUnbuyable, turret3Unbuyable;
+    private bool isArcherBuyable, isKnightBuyable, isTurret3Buyable;
+    public int archerPrice = 300, knightPrice = 400, turret3Price = 500;
+
+
+
+
+    // Update is called once per frame
+    void Update()
+    {
+        EnoughMoney();
+    }
+
+    void EnoughMoney()
+    {
+
+
+        if (coins.scoreValue >= archerPrice)
+        {
+            archerButton.interactable = true;
+            archerUnbuyable.SetActive(false);
+        }
+        else
+        {
+            archerButton.interactable = false;
+            archerUnbuyable.SetActive(true);
+        }
+
+        if (coins.scoreValue >= knightPrice)
+        {
+            knightButton.interactable = true;
+            knightUnbuyable.SetActive(false);
+
+        }
+        else
+
+        {
+            knightButton.interactable = false;
+            knightUnbuyable.SetActive(true);
+        }
+
+        if (coins.scoreValue >= turret3Price)
+        {
+            turret3Button.interactable = true;
+            turret3Unbuyable.SetActive(false);
+
+        }
+        else
+        {
+            turret3Button.interactable = false;
+            turret3Unbuyable.SetActive(true);
+        }
+
+
+    }
+}
